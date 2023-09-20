@@ -1,0 +1,151 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+set number
+set relativenumber
+set idearefactormode=keep
+set ideajoin
+set surround
+set ignorecase smartcase
+set NERDTree
+set scrolloff=5
+" Do incremental searching.
+set incsearch
+
+let mapleader = " "
+" nnoremap <Enter> i<Enter><Esc>k$
+nnoremap <Esc> <Esc>:noh<Enter>
+nnoremap <leader>h <action>(PreviousTab)
+nnoremap <leader>l <action>(NextTab)
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+nnoremap J mzJ`z
+" vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+" vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+" system clipboard copy & paste
+" TODO - think about copy, delete, cut , paste"
+vmap <leader>y "+y
+nmap <leader>y "+yy
+nmap <leader>p "+p
+nmap <leader>P "+P
+vmap <leader>p "+p
+vmap <leader>P "+P
+
+""" Undo & Redo
+nmap u <action>($Undo)
+nmap U <action>($Redo)
+vmap u <action>($Undo)
+vmap U <action>($Redo)
+
+" scrolling
+" nmap <leader>d <C-d>
+" nmap <leader>u <C-u>
+" vmap <leader>d <C-d>
+" vmap <leader>u <C-u>
+
+" tab actions
+nmap L <action>(NextTab)
+nmap H <action>(PreviousTab)
+
+" find file action
+" SearchEverywhere -> <S-S>
+nmap <leader>rf <action>(RecentFiles)
+nmap <leader>rl <action>(RecentLocations)
+nmap <leader>ff <action>(GotoFile)
+nmap <leader>fif <action>(FindInPath)
+
+" symbols"
+nmap <leader>rn <action>(RenameElement)
+nmap <leader>fu <action>(FindUsages)
+nmap <leader>fuf <action>(FindUsagesInFile)
+" findnext, findprev -> <M-g> && <M-S-g>"
+"nmap ...... <action>(FindNext)
+"nmap ...... <action>(FindPrev)
+
+"nmap <leader>w <action>(CloseEditor) #TODO
+
+""" git <leader>g prefix for git TODO
+nmap <leader>gm <action>(Git.Menu)
+
+" NERDTree
+nmap <D-1> :NERDTree<CR>
+nnoremap <leader>e :NERDTree<CR>
+" map <c-n> :NERDTree<CR> " we have set this is in even ide keymap as well
+
+Plug 'easymotion/vim-easymotion'
+map S <Plug>(easymotion-s)
+map s <Plug>(easymotion-f)
+
+"REFERENCE : https://towardsdatascience.com/the-essential-ideavim-remaps-291d4cd3971b"
+nnoremap \e :e ~/.ideavimrc<CR>
+nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+
+" format file
+map <Leader>fm <Action>(ReformatCode)
+
+nnoremap <leader>zm :action ToggleDistractionFreeMode<CR>
+
+"""window management <leader>w
+nmap <leader>wv <action>(SplitVertically)
+nmap <leader>wh <action>(SplitHorizontally)
+nmap <leader>wn <action>(NextSplitter)
+nmap <leader>wp <action>(PrevSplitter)
+nmap <leader>wg <action>(MoveEditorToOppositeTabGroup)
+nmap <leader>ww <action>(EditorTabsGroup)
+"merge
+nmap <leader>wm <action>(Unsplit)
+"merge all
+nmap <leader>wM <action>(UnsplitAll)
+nmap <leader>wc <action>(CloseAllEditors)
+
+"""harpoon
+nmap <leader>HH <action>(ShowHarpoon)
+nmap <leader>hh <action>(AddToHarpoon)
+nmap <leader>H1 <action>(SetHarpoon1)
+nmap <leader>H2 <action>(SetHarpoon2)
+nmap <leader>H3 <action>(SetHarpoon3)
+nmap <leader>H4 <action>(SetHarpoon4)
+nmap <leader>H5 <action>(SetHarpoon5)
+nmap <leader>h1 <action>(GotoHarpoon1)
+nmap <leader>h2 <action>(GotoHarpoon2)
+nmap <leader>h3 <action>(GotoHarpoon3)
+nmap <leader>h4 <action>(GotoHarpoon4)
+nmap <leader>h5 <action>(GotoHarpoon5)
+
+"""terminal
+nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
+" <S-Esc> to hide "
+
+"nnoremap [[ :action MethodUp<CR> #TODO
+"nnoremap ]] :action MethodDown<CR> #TODO
+
+
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
+
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
