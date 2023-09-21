@@ -17,8 +17,6 @@ set incsearch
 let mapleader = " "
 " nnoremap <Enter> i<Enter><Esc>k$
 nnoremap <Esc> <Esc>:noh<Enter>
-nnoremap <leader>h <action>(PreviousTab)
-nnoremap <leader>l <action>(NextTab)
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 nnoremap J mzJ`z
@@ -34,7 +32,13 @@ nmap <leader>P "+P
 vmap <leader>p "+p
 vmap <leader>P "+P
 
-""" Undo & Redo
+" navigation forward & backward
+" nmap <C-o> <action>(Forward)
+" nmap <C-i> <action>(Backward)
+" vmap <C-o> <action>(Forward)
+" vmap <C-i> <action>(Backward)
+
+" Undo & Redo
 nmap u <action>($Undo)
 nmap U <action>($Redo)
 vmap u <action>($Undo)
@@ -62,12 +66,8 @@ nmap <leader>rn <action>(RenameElement)
 nmap <leader>fu <action>(FindUsages)
 nmap <leader>fuf <action>(FindUsagesInFile)
 " findnext, findprev -> <M-g> && <M-S-g>"
-"nmap ...... <action>(FindNext)
-"nmap ...... <action>(FindPrev)
 
-"nmap <leader>w <action>(CloseEditor) #TODO
-
-""" git <leader>g prefix for git TODO
+"" git <leader>g prefix for git TODO
 nmap <leader>gm <action>(Git.Menu)
 
 " NERDTree
@@ -79,7 +79,7 @@ Plug 'easymotion/vim-easymotion'
 map S <Plug>(easymotion-s)
 map s <Plug>(easymotion-f)
 
-"REFERENCE : https://towardsdatascience.com/the-essential-ideavim-remaps-291d4cd3971b"
+" REFERENCE : https://towardsdatascience.com/the-essential-ideavim-remaps-291d4cd3971b"
 nnoremap \e :e ~/.ideavimrc<CR>
 nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
 
@@ -88,34 +88,32 @@ map <Leader>fm <Action>(ReformatCode)
 
 nnoremap <leader>zm :action ToggleDistractionFreeMode<CR>
 
-"""window management <leader>w
+" window management <leader>w
 nmap <leader>wv <action>(SplitVertically)
 nmap <leader>wh <action>(SplitHorizontally)
 nmap <leader>wn <action>(NextSplitter)
 nmap <leader>wp <action>(PrevSplitter)
 nmap <leader>wg <action>(MoveEditorToOppositeTabGroup)
 nmap <leader>ww <action>(EditorTabsGroup)
-"merge
 nmap <leader>wm <action>(Unsplit)
-"merge all
 nmap <leader>wM <action>(UnsplitAll)
 nmap <leader>wc <action>(CloseAllEditors)
 
-"""harpoon
-nmap <leader>HH <action>(ShowHarpoon)
+" harpoon
+nmap <leader>hss <action>(ShowHarpoon)
 nmap <leader>hh <action>(AddToHarpoon)
-nmap <leader>H1 <action>(SetHarpoon1)
-nmap <leader>H2 <action>(SetHarpoon2)
-nmap <leader>H3 <action>(SetHarpoon3)
-nmap <leader>H4 <action>(SetHarpoon4)
-nmap <leader>H5 <action>(SetHarpoon5)
+nmap <leader>hs1 <action>(SetHarpoon1)
+nmap <leader>hs2 <action>(SetHarpoon2)
+nmap <leader>hs3 <action>(SetHarpoon3)
+nmap <leader>hs4 <action>(SetHarpoon4)
+nmap <leader>hs5 <action>(SetHarpoon5)
 nmap <leader>h1 <action>(GotoHarpoon1)
 nmap <leader>h2 <action>(GotoHarpoon2)
 nmap <leader>h3 <action>(GotoHarpoon3)
 nmap <leader>h4 <action>(GotoHarpoon4)
 nmap <leader>h5 <action>(GotoHarpoon5)
 
-"""terminal
+"" terminal
 nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
 " <S-Esc> to hide "
 
@@ -148,4 +146,3 @@ Plug 'tpope/vim-commentary'
 
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
-
